@@ -5,13 +5,14 @@ using System.Text;
 namespace NetCamtHT_1.Classes
 {
     class Buy
-    {
+    {//покупка, корзина може включати кілька Product, тому тут доцільніше колекцію.
         Product Product { get; }
 
         int count;
         public int Count
         {
             get {return count; }
+            //Краще використати тернарний оператор
             set { if (value > 0) count = value; else count = 0; }
         }
         public decimal TotalPrice { get; }
@@ -35,5 +36,6 @@ namespace NetCamtHT_1.Classes
                 TotalWeight = Product.Weight * Count;
             }
         }
+        // відсутній ToString!!! 
     }
 }
