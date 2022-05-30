@@ -6,7 +6,7 @@ using task2.Task1.task2;
 namespace task2.Task1
 {
    public class Storage
-    {
+    {//Ця властивість лишня. Колекції краще повіністю інкапсулювати.
         List<Product> Product_storage { get; }
 
         public Storage(params Product[] produts)//наповнення інформацією даних шляхом ініціалізації,
@@ -19,6 +19,7 @@ namespace task2.Task1
         {
             Product_storage = new List<Product>();
         }
+      // Цей діалог мав би бути не в цьому класі. модельному класу достатньо мати можливість додавати product. А діалог слід реалізовувати, наприклад, в класі ConsoleViwer
         public void UserInput()//наповнення інформацією даних у режимі діалогу з користувачем
         {
             string name, category = "", type = "", expiring;
@@ -53,6 +54,7 @@ namespace task2.Task1
         {
             Console.WriteLine("__Storage__");
             foreach (dynamic item in Product_storage)
+               // Нецільове використання класу Check. Він мав бути просто відображувачем покупки.
                 Check.Output(item);
 
         }
@@ -80,7 +82,7 @@ namespace task2.Task1
                     return Product_storage[index];
                 }
                 else
-                {
+                {// Де перехоплення цього винятку
                     throw new Exception("Index out of range array");
                 }
             }
