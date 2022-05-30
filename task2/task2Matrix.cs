@@ -5,7 +5,7 @@ using System.Text;
 namespace task2
 {
     class task2Matrix
-    {
+    {// Matrix поле, а поля іменують з маленької літери
         int[,] Matrix;
         int rowCount;
         public int Rows
@@ -17,6 +17,7 @@ namespace task2
         public int Columns
         {
             get { return colCount; }
+            // краще тернарний оператор.
             set { if (value > 0) colCount = value; else colCount = 0; }
         }
         public task2Matrix(int n,int m)
@@ -25,6 +26,7 @@ namespace task2
             Columns = m;
             Matrix = new int[n, m];
         }
+        // Краще метод ToString
         public void Input()
         {
             Console.WriteLine("Введіть кількість рядків матриці");
@@ -59,7 +61,7 @@ namespace task2
             }
         }
         public void FillDiagonalSnake()
-        {
+        {// непродумане керування згином змійки, його краще задавати параметром.
             if (Rows == Columns)
             {
                 int number = 1;
