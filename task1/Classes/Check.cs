@@ -11,7 +11,7 @@ namespace NetCamtHT_1.Classes
             Console.WriteLine("Product: Name = " +  p.Name + "; Price = " + p.Price.ToString() + "; Weight = " + p.Weight.ToString());
         }
         public static void Output(Buy b)
-        {
+        {// З колекцією буде трішки складніше
             Console.WriteLine("Buy: Count = " + b.Count + "; TotalPrice = " + b.TotalPrice.ToString() + "; TotalWeight = " + b.TotalWeight.ToString());
         }
     }
