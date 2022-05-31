@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,14 +8,14 @@ namespace task3
 {
     class Vector
     {
+        #region base
         int[] arr;
-
 
         public int this[int index]
         {
             get
-            { 
-                if(index >= 0 && index < arr.Length)
+            {
+                if (index >= 0 && index < arr.Length)
                 {
                     return arr[index];
                 }
@@ -24,13 +24,11 @@ namespace task3
                     throw new Exception("Index out of range array");
                 }
             }
-            set 
+            set
             {
                 arr[index] = value;
             }
         }
-
-
 
         public Vector(int[] arr)
         {
@@ -60,7 +58,7 @@ namespace task3
             int x;
             for (int i = 0; i < arr.Length; i++)
             {
-                while(arr[i] == 0)
+                while (arr[i] == 0)
                 {
                     x = random.Next(1, arr.Length + 1);
                     bool isExist = false;
@@ -83,12 +81,12 @@ namespace task3
 
         public Pair[] CalculateFreq()
         {
-            
+
             Pair[] pairs = new Pair[arr.Length];
 
             for (int i = 0; i < arr.Length; i++)
             {
-                pairs[i] = new Pair(0,0);
+                pairs[i] = new Pair(0, 0);
 
             }
             int countDifference = 0;
@@ -98,7 +96,7 @@ namespace task3
                 bool isElement = false;
                 for (int j = 0; j < countDifference; j++)
                 {
-                    if(arr[i] == pairs[j].Number)
+                    if (arr[i] == pairs[j].Number)
                     {
                         pairs[j].Freq++;
                         isElement = true;
@@ -121,12 +119,13 @@ namespace task3
 
             return result;
         }
-
+        #endregion base
+        #region task3
         public bool IsPalindrome()
         {
             for (int i = 0; i < arr.Length; i++)
             {
-                if (arr[i] != arr[arr.Length - i-1])
+                if (arr[i] != arr[arr.Length - i - 1])
                     return false;
             }
             return true;
@@ -146,7 +145,7 @@ namespace task3
         }
         public Vector FindSubsequence()
         {
-            int count = 0,number = 0,maxCount = 0;
+            int count = 0, number = 0, maxCount = 0;
             for (int i = 1; i < arr.Length; i++)
             {
                 if (arr[i] != arr[i - 1])
@@ -167,15 +166,24 @@ namespace task3
             }
             return res;
         }
+        #endregion task3
+        #region sort
+        private void Swap(int v1, int v2)
+        {
+            int temp = arr[v1];
+            arr[v1] = arr[v2];
+            arr[v2] = temp;
+        }
         public Vector BubbleSort()
         {
             for (int i = 0; i < arr.Length - 1; i++)
-                for (int j = 0; j < arr.Length- i- 1; j++)
+                for (int j = 0; j < arr.Length - i - 1; j++)
                     if (arr[j + 1] > arr[j])
-                        Swap(j + 1,j);
+                        Swap(j + 1, j);
             return new Vector(arr);
         }
-        public enum Pivot{ First,Last,Mid}
+        #region task4
+        public enum Pivot { First, Last, Mid }
         public Vector QuickSort(int low, int high, Pivot pivot)
         {
 
@@ -186,42 +194,9 @@ namespace task3
                 QuickSort(low, pivotIndex - 1, pivot);
                 QuickSort(pivotIndex + 1, high, pivot);
             }
-          
+
             return new Vector(arr);
         }
-        private int Partition(int low, int high)
-        {
-            int pivot = arr[low];
-            int swapIndex = low;
-            for (int i = low ; i <= high; i++)
-            {
-                if (arr[i] < pivot)
-                {
-                    swapIndex++;
-                    Swap(i, swapIndex);
-                }
-            }
-            Swap(low, swapIndex);
-            return swapIndex;
-        }
-      
-        private int PartitionLast(int low, int high)
-        {
-            int pivot = arr[high];
-            int swapIndex = low-1;
-            for (int i = low ; i < high; i++)
-            {
-                if (arr[i] < pivot)
-                {
-                    swapIndex++;
-                    Swap(i, swapIndex);
-
-                }
-            }
-            Swap(swapIndex+1, high);
-            return swapIndex+1;
-        }
-
         private int Partition(int low, int high, Pivot p)
         {
             int pivot;
@@ -243,12 +218,9 @@ namespace task3
                 Swap(i, j);
             }
         }
-        private void Swap(int v1, int v2)
-        {
-            int temp = arr[v1];
-            arr[v1] = arr[v2];
-            arr[v2] = temp;
-        }
+        #endregion task4
+        #endregion sort
+
 
         public override string ToString()
         {
