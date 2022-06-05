@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -19,13 +19,16 @@ namespace task6
         }
         private string GetOneLine(int i)
         {
-            return "Квартира №" + Info[i, 0] +
-                    "; Прізвище власника = " + Info[i, 1] +
-                    "; Початкові покази = " + Info[i, 2] +
-                    "; Кінцеві покази = " + Info[i, 3] +
-                    "; Дати передачі показів :" + (Info[i, 4] + '.' + (Quarter - 1) * 3 + ".22") +
-                    ", " + (Info[i, 5] + '.' + ((Quarter - 1) * 3 + 1) + ".22") +
-                    ", " + (Info[i, 6] + '.' + ((Quarter - 1) * 3 + 2) + ".22") + '\n';
+            return
+                String.Format("Квартира №{0,3}; Прізвище власника = {1,15}; Початкові покази = {2,5}; Кінцеві покази = {3,5};" +
+                " Дати передачі показів :{4,10}, {5,10}, {6,10}",
+                Info[i, 0],
+                Info[i, 1],
+                Info[i, 2],
+                Info[i, 3],
+                (Info[i, 4] + '.' + (Quarter - 1) * 3 + ".22"),
+                (Info[i, 5] + '.' + ((Quarter - 1) * 3 + 1) + ".22"),
+                (Info[i, 6] + '.' + ((Quarter - 1) * 3 + 2) + ".22")) + '\n';
         }
         public void OutputToFile()
         {
