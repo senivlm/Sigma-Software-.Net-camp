@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace task2
-{
+{//dgfhfdgfdgfdgfdg
     class task2Matrix
     {
         int[,] Matrix;
