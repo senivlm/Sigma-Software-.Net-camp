@@ -1,0 +1,14 @@
+C:\Users\Maks\Desktop\sigma\task7\bin\Debug\netcoreapp3.1\task7.exe
+C:\Users\Maks\Desktop\sigma\task7\bin\Debug\netcoreapp3.1\task7.deps.json
+C:\Users\Maks\Desktop\sigma\task7\bin\Debug\netcoreapp3.1\task7.runtimeconfig.json
+C:\Users\Maks\Desktop\sigma\task7\bin\Debug\netcoreapp3.1\task7.runtimeconfig.dev.json
+C:\Users\Maks\Desktop\sigma\task7\bin\Debug\netcoreapp3.1\task7.dll
+C:\Users\Maks\Desktop\sigma\task7\bin\Debug\netcoreapp3.1\task7.pdb
+C:\Users\Maks\Desktop\sigma\task7\obj\Debug\netcoreapp3.1\task7.csproj.AssemblyReference.cache
+C:\Users\Maks\Desktop\sigma\task7\obj\Debug\netcoreapp3.1\task7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Maks\Desktop\sigma\task7\obj\Debug\netcoreapp3.1\task7.AssemblyInfoInputs.cache
+C:\Users\Maks\Desktop\sigma\task7\obj\Debug\netcoreapp3.1\task7.AssemblyInfo.cs
+C:\Users\Maks\Desktop\sigma\task7\obj\Debug\netcoreapp3.1\task7.csproj.CoreCompileInputs.cache
+C:\Users\Maks\Desktop\sigma\task7\obj\Debug\netcoreapp3.1\task7.dll
+C:\Users\Maks\Desktop\sigma\task7\obj\Debug\netcoreapp3.1\task7.pdb
+C:\Users\Maks\Desktop\sigma\task7\obj\Debug\netcoreapp3.1\task7.genruntimeconfig.cache
