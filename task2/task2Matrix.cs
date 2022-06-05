@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+//hdskfgskfdkdsgf
 namespace task2
 {
     class task2Matrix
