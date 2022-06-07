@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace task3
 {
     class Vector
-    {
+    {//ваш номер 5
         #region base
         int[] arr;
 
@@ -191,6 +191,7 @@ namespace task3
             {
                 int pivotIndex;
                 pivotIndex = Partition(low, high, pivot);
+                //   Ви один елемент при сортуванні на кожному кроці випускаєте. 
                 QuickSort(low, pivotIndex - 1, pivot);
                 QuickSort(pivotIndex + 1, high, pivot);
             }
