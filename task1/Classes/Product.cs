@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,29 +8,29 @@ namespace NetCamtHT_1.Classes
     {
         public string Name { get; set; }
 
-        decimal price;
-        public decimal Price
+        double price;
+        public double Price
         {
             get { return price; }   
-            set { if (value > 0) price = value; else price = 0; }  
+            set { _ = value > 0 ? price = value : price = 0; }  
         }
 
-        decimal weight;
-        public decimal Weight
+        double weight;
+        public double Weight
         {
             get { return weight; }
-            set { if (value > 0) weight = value; else weight = 0; }
+            set { _ = value > 0 ? weight = value : weight = 0; }
         }
 
-        public Product(string name, decimal price, decimal weight)
+        public Product(string name, double price, double weight)
         {
             Name = name;
             Price = price;
             Weight = weight;
         }
-        Product()
+        public override string ToString()
         {
-
+            return "Product: Name = " + Name + "; Price = " + Price.ToString() + "; Weight = " + Weight.ToString();
         }
 
     }
