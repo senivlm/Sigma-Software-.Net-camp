@@ -8,7 +8,7 @@ namespace task4
     {
         static void Main(string[] args)
         {
-
+// Проміжні файли бажано зачищати
             Vector vec = new Vector();
             StreamReader reader = new StreamReader("..\\..\\..\\file.txt");
             Console.WriteLine("Before external merge sort = \n" + reader.ReadLine());
