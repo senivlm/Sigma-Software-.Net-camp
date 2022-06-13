@@ -44,6 +44,7 @@ namespace task6
         public string PrintAndOutputInFile()
         {
             string output = ParseText();
+            // Краще передати як параметр
             StreamWriter writer = new StreamWriter("..\\..\\..\\Result.txt");
             writer.WriteLine(output);
             writer.Close();
