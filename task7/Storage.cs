@@ -7,7 +7,7 @@ using task6;
 namespace task7
 {
    public class Storage
-    {
+    {//змінну переіменуйте з маленької літери. Специфікатори вказуйте явно.
         List<Product> Product_storage;
         Log log;
         #region task2
@@ -22,6 +22,7 @@ namespace task7
             Product_storage = new List<Product>();
             log = new Log();
         }
+      //цей метод слід винести з цього класу.
         public void UserInput()//наповнення інформацією даних у режимі діалогу з користувачем
         {
             string name, category = "", type = "", expiring;
@@ -117,7 +118,7 @@ namespace task7
             if (char.IsLower(name[0]))
                 name = char.ToUpper(name[0]) + name.Substring(1);
             double price=0, weight=0;
-
+//А якщо else, то, можливо теж виняток.
             if (double.TryParse(data[1], NumberStyles.Number, CultureInfo.GetCultureInfo("en-US"), out double pr))
                 price = pr;
             if (double.TryParse(data[2], NumberStyles.Number, CultureInfo.GetCultureInfo("en-US"), out double wh))
@@ -141,6 +142,7 @@ namespace task7
 
                     Product_storage.Add(p);
                 }
+               // пропонувалась фіксація часу виникнення проблеми.
                 catch (Exception e)
                 {
                     log.Add(e.Message);
