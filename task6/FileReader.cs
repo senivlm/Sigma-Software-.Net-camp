@@ -19,6 +19,7 @@ namespace task6
             using (StreamReader sr = new StreamReader(Path))
                 return sr.ReadToEnd();
         }
+        //Виклик у Sentance мав відбутись через FileReader.ReadFromFile()
         public static string ReadFromFile()
         { 
             StreamReader reader;
@@ -28,7 +29,7 @@ namespace task6
                 return reader.ReadToEnd();
             }
             catch (FileNotFoundException)
-            {
+            {//Не універсально! 
                 try
                 {
                     reader = new StreamReader("..\\..\\..\\" + Path);
@@ -62,9 +63,10 @@ namespace task6
             var firstSplit = file.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
             int n = GetMeterFileInfo()[0];
+            //чому так?
             string[,] res = new string[n,7];
             for (int i = 0; i<n;i++)
-            {
+            {//Вихід за межі.
                 var secondSplit = firstSplit[i+1].Split();
                 for(int j = 0;j<7;j++)
                     res[i,j] = secondSplit[j];
