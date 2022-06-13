@@ -6,7 +6,7 @@ using static task6.FileReader;
 namespace task6
 {
     class Meter
-    {
+    {// не дуже подобається проектування. Можу усно пояснити проблеми.
         int NumberOfFlats;
         int Quarter;
         string[,] Info;
