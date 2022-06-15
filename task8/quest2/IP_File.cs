@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,12 +50,14 @@ namespace task8
 
             return res;
         }
-        public string MostPopularDay()
+        private string MostPopularDayForOne(string userIP)
         {
             Dictionary<string, int> res = new Dictionary<string, int>();
 
             for (int i = 0; i < Info.Count; i++)
             {
+                if (Info[i].IP_Address != userIP)
+                    continue;
                 if (!res.ContainsKey(Info[i].WeekDay.ToString()))
                     res.Add(Info[i].WeekDay.ToString(), 1);
                 else
@@ -64,15 +66,25 @@ namespace task8
             var keyOfMostPopular =res.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
             return keyOfMostPopular;
         }
-        public string RushHour()
+        public Dictionary<string, string> MostPopularDayForEvery()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+
+            for (int i = 0; i < Info.Count; i++)
+                if(!res.ContainsKey(Info[i].IP_Address))
+                    res.Add(Info[i].IP_Address, MostPopularDayForOne(Info[i].IP_Address));
+
+            return res;
+        }
+        private string RushHour(string userIP)
         {
             Dictionary<TimeSpan, int> res = new Dictionary<TimeSpan, int>();
 
             for (int i = 0; i < 23; i++)
-            {
-
                 for (int j = 0; j < Info.Count; j++)
                 {
+                    if (Info[j].IP_Address != userIP)
+                        continue;
                     TimeSpan time = new TimeSpan(i, 0, 0);
                     if (time<Info[j].AccessTime && Info[j].AccessTime<time+ TimeSpan.FromHours(1))
                     {
@@ -83,8 +95,37 @@ namespace task8
                     }
                 }
 
-                    
-            }
+            var keyOfMostPopular = res.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
+            return keyOfMostPopular.ToString() + " - " + (keyOfMostPopular + TimeSpan.FromHours(1)).ToString();
+        }
+       
+        public Dictionary<string, string> RushHour()
+        {
+            Dictionary<string, string> res = new Dictionary<string, string>();
+
+            for (int i = 0; i < Info.Count; i++)
+                    if (!res.ContainsKey(Info[i].IP_Address))
+                    res.Add(Info[i].IP_Address, RushHour(Info[i].IP_Address));
+
+            return res;
+        }
+        public string RushHourGeneral()
+        {
+            Dictionary<TimeSpan, int> res = new Dictionary<TimeSpan, int>();
+
+            for (int i = 0; i < 23; i++)
+                for (int j = 0; j < Info.Count; j++)
+                {
+                    TimeSpan time = new TimeSpan(i, 0, 0);
+                    if (time < Info[j].AccessTime && Info[j].AccessTime < time + TimeSpan.FromHours(1))
+                    {
+                        if (!res.ContainsKey(time))
+                            res.Add(time, 1);
+                        else
+                            res[time]++;
+                    }
+                }
+
             var keyOfMostPopular = res.Aggregate((x, y) => x.Value > y.Value ? x : y).Key;
             return keyOfMostPopular.ToString() + " - " + (keyOfMostPopular + TimeSpan.FromHours(1)).ToString();
         }
