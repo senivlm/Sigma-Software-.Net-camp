@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace task8
 {
@@ -19,10 +19,16 @@ namespace task8
             foreach (var keyVal in microtask1)
                 Console.WriteLine("IP = " + keyVal.Key + " Count =" + keyVal.Value);
             Console.WriteLine("_____________");
-            Console.WriteLine("MostPopularDay = " + i.MostPopularDay());
+            var microtask2 = i.MostPopularDayForEvery();
+            foreach (var keyVal in microtask2)
+                Console.WriteLine("IP = " + keyVal.Key + " MostPopularDay =" + keyVal.Value);
             Console.WriteLine("_____________");
-            Console.WriteLine("RushHour = " + i.RushHour());
+            var microtask3 = i.RushHour();
+            foreach (var keyVal in microtask3)
+                Console.WriteLine("IP = " + keyVal.Key + " MostPopularTimePeriod =" + keyVal.Value);
             Console.WriteLine("_____________");
+            Console.WriteLine("RushHour = " + i.RushHourGeneral());
+
 
             Product[] arr = new Product[4];
             arr[0] = new Product("Ice-cream", 22, 0.08);
@@ -35,7 +41,7 @@ namespace task8
             arr2[0] = new Product("Ice-cream", 100, 0.08);
             arr2[1] = new Dairy_products(10, "Milk", 100, 0.9);
             arr2[2] = new Meat(Category.Second, MeatType.Chicken, "Nuggets", 100, 50);
-            
+
             Storage storage2 = new Storage(arr2);
 
             var res = Storage.FirstExceptSecond(storage1, storage2);
