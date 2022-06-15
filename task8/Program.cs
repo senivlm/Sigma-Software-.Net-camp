@@ -46,7 +46,6 @@ namespace task8
 
             var res = Storage.FirstExceptSecond(storage1, storage2);
             res.Output();
-            //можна було б використати одні функції в інших, але вже дуже піздно
             var res2 = Storage.SameInFirstAndSecond(storage1, storage2);
             res2.Output();
 
