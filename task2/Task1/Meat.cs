@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace task2.Task1.task2
+namespace task2
 {
-    enum Category { Highest ,First,Second}
-    enum MeatType { Lamb, Veal, Pork, Chicken }
+    public enum Category { Highest ,First,Second}
+    public enum MeatType { Lamb, Veal, Pork, Chicken }
     //баранина, телятина, свинина, курятина
-    class Meat : Product
+    public class Meat : Product
     {
 
         public Category CategoryOfMeat { get; }
@@ -58,6 +58,10 @@ namespace task2.Task1.task2
            
             Price += Price * (percent + temp) / 100; ;
             return Price;
+        }
+        public override string ToString()
+        {
+            return "Meat: Category = " + CategoryOfMeat + " ; Type = " + TypeOfMeat + " ; Name = " + Name + "; Price = " + Price.ToString() + "; Weight = " + Weight.ToString();
         }
     }
 }

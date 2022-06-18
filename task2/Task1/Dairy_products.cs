@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace task2.Task1.task2
+namespace task2
 {
     class Dairy_products:Product
     {
@@ -31,6 +31,10 @@ namespace task2.Task1.task2
                 temp = 20;
             Price += Price * (percent-temp) / 100; ;
             return Price;
+        }
+        public override string ToString()
+        {
+            return "Dairy: Expiring in = " + ExpireDate + "days ; Name = " + Name + "; Price = " + Price.ToString() + "; Weight = " + Weight.ToString();
         }
     }
 }

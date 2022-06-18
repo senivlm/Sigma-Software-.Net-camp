@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Maks\\Desktop\\task2\\task2.csproj",
+      "projectUniqueName": "C:\\Users\\Maks\\Desktop\\sigma\\task2\\task2.csproj",
       "projectName": "task2",
-      "projectPath": "C:\\Users\\Maks\\Desktop\\task2\\task2.csproj",
+      "projectPath": "C:\\Users\\Maks\\Desktop\\sigma\\task2\\task2.csproj",
       "packagesPath": "C:\\Users\\Maks\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Maks\\Desktop\\task2\\obj\\",
+      "outputPath": "C:\\Users\\Maks\\Desktop\\sigma\\task2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Maks\\AppData\\Roaming\\NuGet\\NuGet.Config",
