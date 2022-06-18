@@ -6,25 +6,25 @@ namespace task2
 {
     class Matrix
     {
-        public enum startAngle { Right,Down}
-        int[,] Matr;
+        public enum StartAngle { Right,Down}
+        int[,] matrix;
         int rowCount;
         public int Rows
         {
             get { return rowCount; }
-            set { if (value > 0) rowCount = value; else rowCount = 0; }
+            set { _ = value > 0 ? rowCount = value : rowCount = 0; }
         }
         int colCount;
         public int Columns
         {
             get { return colCount; }
-            set { if (value > 0) colCount = value; else colCount = 0; }
+            set { _ = value > 0 ? colCount = value : colCount = 0; }
         }
         public Matrix(int n,int m)
         {
             Rows = n;
             Columns = m;
-            Matr = new int[n, m];
+            matrix = new int[n, m];
         }
         public void Input()
         {
@@ -32,7 +32,7 @@ namespace task2
             Rows = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Введіть кількість стовпців матриці ");
             Columns = Convert.ToInt32(Console.ReadLine());
-            Matr = new int[Rows, Columns];
+            matrix = new int[Rows, Columns];
         }
         public void FillVerticalSnake()
         {
@@ -44,7 +44,7 @@ namespace task2
                     int i1 = 0, j1 = column;
                     for (int i = 0; i < Rows; i++)
                     {
-                        Matr[i1, j1] = number++;
+                        matrix[i1, j1] = number++;
                         i1++;
                     }
                 }
@@ -53,7 +53,7 @@ namespace task2
                     int i1 = Rows-1, j1 = column;
                     for (int i = 0; i < Rows; i++)
                     {
-                        Matr[i1, j1] = number++;
+                        matrix[i1, j1] = number++;
                         i1--;
                     }
                 }
@@ -71,8 +71,8 @@ namespace task2
                         int i1 = line, j1 = 0;
                         for (int i = 0; i < line + 1; i++)
                         {
-                            Matr[i1, j1] = number++;
-                            Matr[Rows - i1 - 1, Rows - j1 - 1] = (Rows * Rows - number + 2);
+                            matrix[i1, j1] = number++;
+                            matrix[Rows - i1 - 1, Rows - j1 - 1] = (Rows * Rows - number + 2);
                             i1--;
                             j1++;
                         }
@@ -82,8 +82,8 @@ namespace task2
                         int i1 = 0, j1 = line;
                         for (int i = 0; i < line + 1; i++)
                         {
-                            Matr[i1, j1] = number++;
-                            Matr[Rows - i1 - 1, Rows - j1 - 1] = (Rows * Rows - number + 2);
+                            matrix[i1, j1] = number++;
+                            matrix[Rows - i1 - 1, Rows - j1 - 1] = (Rows * Rows - number + 2);
                             j1--;
                             i1++;
                         }
@@ -91,12 +91,12 @@ namespace task2
                 }
             }
         }
-        public void FillDiagonalSnake(startAngle angle=startAngle.Right)
+        public void FillDiagonalSnake(StartAngle angle=StartAngle.Right)
         {
-            if (angle == startAngle.Right)
+            if (angle == StartAngle.Right)
                 FillDiagonalSnake();
            
-            else if(angle == startAngle.Down)
+            else if(angle == StartAngle.Down)
             {
                 if (Rows == Columns)
                 {
@@ -108,8 +108,8 @@ namespace task2
                             int i1 = line, j1 = 0;
                             for (int i = 0; i < line + 1; i++)
                             {
-                                Matr[j1, i1] = number++;
-                                Matr[Rows - i1 - 1, Rows - j1 - 1] = (Rows * Rows - number + 2);
+                                matrix[j1, i1] = number++;
+                                matrix[Rows - i1 - 1, Rows - j1 - 1] = (Rows * Rows - number + 2);
                                 i1--;
                                 j1++;
                             }
@@ -119,8 +119,8 @@ namespace task2
                             int i1 = 0, j1 = line;
                             for (int i = 0; i < line + 1; i++)
                             {
-                                Matr[j1, i1] = number++;
-                                Matr[Rows - i1 - 1, Rows - j1 - 1] = (Rows * Rows - number + 2);
+                                matrix[j1, i1] = number++;
+                                matrix[Rows - i1 - 1, Rows - j1 - 1] = (Rows * Rows - number + 2);
                                 j1--;
                                 i1++;
                             }
@@ -141,37 +141,38 @@ namespace task2
                  
                 for(int i = row_lower;i<row_up-1;i++)
                 {
-                    Matr[i, col_lower] = number++;
+                    matrix[i, col_lower] = number++;
                 }
                 row_up--;
                 for (int i = col_lower; i < col_up-1; i++)
                 {
-                    Matr[row_up, i] = number++;
+                    matrix[row_up, i] = number++;
                 }
                 col_up--;
                 for (int i = row_up; i > row_lower-1; i--)
                 {
-                    Matr[i,col_up] = number++;
+                    matrix[i,col_up] = number++;
                 }
                 col_lower++;
                 for (int i = col_up-1; i > col_lower-1; i--)
                 {
-                    Matr[row_lower,i] = number++;
+                    matrix[row_lower,i] = number++;
                 }
                 row_lower++;
             }
         }
-        internal void Output()
+        public override string ToString()
         {
+            string res = "";
             for (int i = 0; i < Rows; ++i)
             {
                 for (int j = 0; j < Columns; ++j)
                 {
-                    Console.Write(String.Format("{0,3}", Matr[i,j].ToString()));
+                    res += String.Format("{0,3}", matrix[i, j].ToString());
                 }
-                Console.WriteLine();
+                res += '\n';
             }
-
+            return res;
         }
     }
 }

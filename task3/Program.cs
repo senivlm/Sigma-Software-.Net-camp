@@ -30,13 +30,13 @@ namespace task3
 
                 Matrix matrix1 = new Matrix(6, 6);
                 Console.WriteLine("__Fill Diagonal Right Snake__");
-                matrix1.FillDiagonalSnake(Matrix.startAngle.Right);
-                matrix1.Output();
+                matrix1.FillDiagonalSnake(Matrix.StartAngle.Right);
+                Console.WriteLine(matrix1);
 
                 Matrix matrix2 = new Matrix(6, 6);
                 Console.WriteLine("__Fill Diagonal Down Snake__");
-                matrix2.FillDiagonalSnake(Matrix.startAngle.Down);
-                matrix2.Output();
+                matrix2.FillDiagonalSnake(Matrix.StartAngle.Down);
+                Console.WriteLine(matrix2);
 
             }
             catch (Exception e)
