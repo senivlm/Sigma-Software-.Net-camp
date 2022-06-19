@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -289,6 +289,22 @@ namespace task3
             writer.WriteLine(t);
             writer.Close();
         }
+        private string GetNextNumber(StreamReader sr)
+        {
+            string res = "";
+            char inChar;
+            int myByte;
+            while ((myByte = sr.Read()) != 32 && sr.Peek() != -1)
+            {
+                inChar = Convert.ToChar(myByte);
+                if (char.IsDigit(inChar))
+                    res += inChar;
+            }
+            if (res != "")
+                return res;
+            else
+                return null;
+        }
         public void ExternalMergeSort(string filename)
         {
             SortHalfAndSaveToFile(filename, 0);
@@ -298,51 +314,44 @@ namespace task3
 
             StreamReader first = new StreamReader("..\\..\\..\\" + "sortedFirstHalf.txt");
             StreamReader second = new StreamReader("..\\..\\..\\" + "sortedSecondHalf.txt");
-            string line1 = first.ReadLine();
-            string line2 = second.ReadLine();
-            var firstStrArray = line1.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            var secondStrArray = line2.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            first.Close();
-            second.Close();
 
-            int[] L = new int[n/2];
-            int[] R = new int[n/2];
-            for (int m = 0; m < n / 2; m++)
-            {
-                L[m] = Convert.ToInt32(firstStrArray[m]);
-                R[m] = Convert.ToInt32(secondStrArray[m]);
-            }
-           
-            int i = 0;
-            int j = 0;
-            int k = 0;
+            string firstElement = GetNextNumber(first);
+            string secondElement = GetNextNumber(second);
+            int L, R;
+
             string result = "";
-            while (i < n && j < n/2)
+            while (firstElement!=null&&secondElement!=null)//((first.Peek() != -1) || (second.Peek() != -1))
             {
-                if (L[i] <= R[j])
+
+                L = Convert.ToInt32(firstElement);
+                R = Convert.ToInt32(secondElement);
+                if (L <= R)
                 {
-                    result += L[i].ToString() + " ";
-                    i++;
+                    result += firstElement + " ";
+                    firstElement = GetNextNumber(first);
                 }
                 else
                 {
-                    result  += R[j].ToString() + " "; 
-                    j++;
+                    result += secondElement + " ";
+                    secondElement = GetNextNumber(second);
                 }
-                k++;
+               
             }
-            while (i < n/2)
+            while (first.Peek() != -1)
             {
-                result += L[i].ToString() + " ";
-                i++;
-                k++;
+                result += firstElement + " ";
+                firstElement = GetNextNumber(first);
+                
             }
-            while (j < n/2)
+            while (second.Peek() != -1)
             {
-                result += R[j].ToString() + " ";
-                j++;
-                k++;
+                result += secondElement + " ";
+                secondElement = GetNextNumber(second);
+                
             }
+
+            first.Close();
+            second.Close();
 
             StreamWriter writer = new StreamWriter("..\\..\\..\\" + "sortedAll.txt");
             writer.WriteLine(result);
