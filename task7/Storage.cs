@@ -157,7 +157,7 @@ namespace task7
 
             List<string> p;
             for (int i = 0; i < firstSplit.Length; i++)
-            {
+            {//чому тут немає захисту?
                 p = new List<string>();
                 var secondSplit = firstSplit[i].Split(',', StringSplitOptions.RemoveEmptyEntries);
 
