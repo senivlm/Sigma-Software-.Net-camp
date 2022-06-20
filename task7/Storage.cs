@@ -22,6 +22,7 @@ namespace task7
             Product_storage = new List<Product>();
             log = new Log();
         }
+      //цей метод слід винести з цього класу.
         public void UserInput()//наповнення інформацією даних у режимі діалогу з користувачем
         {
             string name, category = "", type = "", expiring;
