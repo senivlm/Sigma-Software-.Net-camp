@@ -6,7 +6,7 @@ namespace task7
     {
         static void Main(string[] args)
         {
-
+//Не побачила другої частини завдання.
             Storage s = new Storage();
             s.InputFromFiles();
             s.Output();
