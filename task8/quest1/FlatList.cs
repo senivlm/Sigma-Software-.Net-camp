@@ -21,6 +21,7 @@ namespace task8
 
             FlatList res = new FlatList();
             res.AddRange(a);
+            //краще було через множини. Так лишні вітки циклу
             foreach (var first in a)
                 foreach (var second in b)
                     if (first == second)
