@@ -1,0 +1,4 @@
+Total price of Борщ in UAH = 867,1
+Total price of Окрошка in UAH = 145,625
+Total price of Харчо in UAH = 126,305
+
