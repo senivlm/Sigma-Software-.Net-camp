@@ -1,0 +1,1 @@
+﻿Create a translator For    text Conversion,    where each word is replaced by a dictionary equivalent.

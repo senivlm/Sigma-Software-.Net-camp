@@ -1,0 +1,13 @@
+﻿create-створити
+translator-перекладач
+for-для
+conversion-перетворення
+each-кожне
+replaced-замінено
+by-на
+dictionary-словник
+equivalent-евківалент
+text-текст
+word-слово
+where-де
+is-є
