@@ -4,10 +4,10 @@ using System.Text;
 
 namespace task7
 {
-    enum Category { Highest ,First,Second}
-    enum MeatType { Lamb, Veal, Pork, Chicken }
+    public enum Category { Highest ,First,Second}
+    public enum MeatType { Lamb, Veal, Pork, Chicken }
     //баранина, телятина, свинина, курятина
-    class Meat : Product
+    public class Meat : Product
     {
 
         public Category CategoryOfMeat { get; }
@@ -58,6 +58,10 @@ namespace task7
            
             Price += Price * (percent + temp) / 100; ;
             return Price;
+        }
+        public override string ToString()
+        {
+            return "Meat: Category = " + CategoryOfMeat + " ; Type = " + TypeOfMeat + " ; Name = " + Name + "; Price = " + Price.ToString() + "; Weight = " + Weight.ToString();
         }
     }
 }

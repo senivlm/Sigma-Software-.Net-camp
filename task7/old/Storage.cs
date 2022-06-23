@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using System.Text;
-using task6;
-using task7.old;
+
+using System.Linq;
+using System.Globalization;
 
 namespace task7
 {
-   public class Storage
+    public class Storage
     {
         private Dictionary<Product, int> product_storage;
         private Log log;
-        #region task2
+        #region task7
 
         public Product this[int index]//створити індексатор для повного доступу за номером до масиву товарів.
         {
@@ -39,10 +38,13 @@ namespace task7
             product_storage = new Dictionary<Product, int>();
             foreach (var item in produts)
                 Add(item);
+
+            log = new Log();
         }
         public Storage()
         {
             product_storage = new Dictionary<Product, int>();
+            log = new Log();
         }
         public void Add(Product p, int c)
         {
@@ -96,9 +98,9 @@ namespace task7
                 res += '\n' + keyVal.Key.ToString() + "\nCount = " + keyVal.Value;
             return res;
         }
-        #endregion task2
+        #endregion task7
         #region task7
-        
+
         private string ReadPlainFromFiles()
         {
 
@@ -111,7 +113,7 @@ namespace task7
                 res = FileReader.ReadFromFile(path);
                 i++;
             }
-            while (i < 3&&res == "Файл не знайдено");
+            while (i < 3 && res == "File not found");
             return res;
         }
 
@@ -121,17 +123,22 @@ namespace task7
             string name = data[0];
             if (char.IsLower(name[0]))
                 name = char.ToUpper(name[0]) + name.Substring(1);
-            double price=0, weight=0;
+            double price = 0, weight = 0;
 
             if (double.TryParse(data[1], NumberStyles.Number, CultureInfo.GetCultureInfo("en-US"), out double pr))
                 price = pr;
+            //Це виноситься у логи у рядку 156
+            //else
+            //    throw new Exception("Invalid product price");
             if (double.TryParse(data[2], NumberStyles.Number, CultureInfo.GetCultureInfo("en-US"), out double wh))
                 weight = wh;
+            //else
+            //    throw new Exception("Invalid product weight");
 
             string categoryORexpiring = data[3];
             string type = data[4];
 
-            
+
             if (name != null && data[1] != null && data[2] != null)
             {
                 Product p;
@@ -152,14 +159,16 @@ namespace task7
                     //REPLY: це перевантажений метод, з класу Log
                     log.Add(e.Message);
                 }
-                
+
             }
-               
+
         }
 
         public void InputFromFiles()
         {
             string file = ReadPlainFromFiles();
+            if (file == "File not found")
+                throw new Exception("File not found");
             var firstSplit = file.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
             List<string> p;
@@ -169,7 +178,7 @@ namespace task7
                 var secondSplit = firstSplit[i].Split(',', StringSplitOptions.RemoveEmptyEntries);
 
                 for (int j = 0; j < 5; j++)
-                    p.Add(j<secondSplit.Length?secondSplit[j].Trim():null);
+                    p.Add(j < secondSplit.Length ? secondSplit[j].Trim() : null);
 
                 Add(p);
             }

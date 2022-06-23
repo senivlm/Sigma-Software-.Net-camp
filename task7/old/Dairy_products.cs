@@ -32,5 +32,9 @@ namespace task7
             Price += Price * (percent-temp) / 100; ;
             return Price;
         }
+        public override string ToString()
+        {
+            return "Dairy: Expiring in = " + ExpireDate + "days ; Name = " + Name + "; Price = " + Price.ToString() + "; Weight = " + Weight.ToString();
+        }
     }
 }
