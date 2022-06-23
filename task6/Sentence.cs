@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -41,10 +41,10 @@ namespace task6
             return res;
         }
 
-        public string PrintAndOutputInFile()
+        public string PrintAndOutputInFile(string path= "..\\..\\..\\Result.txt")
         {
             string output = ParseText();
-            StreamWriter writer = new StreamWriter("..\\..\\..\\Result.txt");
+            StreamWriter writer = new StreamWriter(path);
             writer.WriteLine(output);
             writer.Close();
 
