@@ -5,11 +5,11 @@ using System.Text;
 
 namespace task6
 {
-    class Meter
+    public class Meter
     {
-        int numberOfFlats;
-        int quarter;
-        List<Flat> info;
+        private int numberOfFlats;
+        private int quarter;
+        private List<Flat> info;
         public Meter(string path= "file.txt")
         {
             numberOfFlats = FileReader.GetMeterFileInfo(path)[0];
