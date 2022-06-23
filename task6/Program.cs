@@ -6,23 +6,26 @@ namespace task6
     {
         static void Main(string[] args)
         {
-           
-            
-            Meter m = new Meter("file.txt");
+
+
+            Meter m = new Meter();
             m.OutputToFile();
-            Console.WriteLine(m.GetOneFlat(26)); 
+            if(!(m.GetOneFlat(26) is null))
+                Console.WriteLine(m.GetOneFlat(26));
+            else
+                Console.WriteLine("Flat not found");
             Console.WriteLine(m.GetMostDebtor(100));
             Console.WriteLine(m.GetUnusedFlat());
 
             string[] t = m.CalculateCosts(100);
-            foreach(var item in t)
+            foreach (var item in t)
                 Console.WriteLine(item);
 
             string[] t2 = m.GetTimePassedFromRecentDate();
             foreach (var item in t2)
                 Console.WriteLine(item);
 
-            Sentence s = new Sentence("text.txt");
+            Sentence s = new Sentence();
              Console.WriteLine(s.PrintAndOutputInFile());
         }
     }

@@ -1,20 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using static task6.FileReader;
 
 namespace task6
 {
     class Sentence
     {
-        public Sentence(string path)
+        public string ParseText(string path)
         {
-        FileReader fr = new FileReader(path);
-        }
-        public string ParseText()
-        {
-            string text = ReadFromFile();
+            string text = FileReader.ReadFromFile(path);
             string sent,res="";
             var firstSplit = text.Split('.', StringSplitOptions.RemoveEmptyEntries);
             for(int i = 0;i<firstSplit.Length;i++)
@@ -41,38 +36,37 @@ namespace task6
             return res;
         }
 
-        public string PrintAndOutputInFile(string path= "..\\..\\..\\Result.txt")
+        public string PrintAndOutputInFile(string InputPath = "..\\..\\..\\text.txt", string OutputPath= "..\\..\\..\\Result.txt")
         {
-            string output = ParseText();
-            StreamWriter writer = new StreamWriter(path);
+            string output = ParseText(InputPath);
+            StreamWriter writer = new StreamWriter(OutputPath);
             writer.WriteLine(output);
             writer.Close();
 
             string res = null;
             int max, min;
             string maxWord, minWord ;
-            string[] text = output.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] text = output.Split('\n', StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0;i< text.Length;i++)
             {
                 maxWord = null;
                 minWord = null;
-                max = 0;
-                min = 100;
                 var sentArr = text[i].Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                min = max = sentArr[0].Length;
                 foreach(var word in sentArr)
                 {
-                    if (word.Length > max)
+                    if (word.Length >= max)
                     {
                         max = word.Length;
                         maxWord = word;
                     }
-                    if (word.Length < min)
+                    if (word.Length <= min)
                     {
                         min = word.Length;
                         minWord = word;
                     }
                 }
-                res += "Найдовше слово = " +maxWord+ " Найкоротше слово = "+minWord +'\n';
+                res += "Найдовше слово = " + String.Format("{0,20}", maxWord)  + " Найкоротше слово = "+ String.Format("{0,10}", minWord) +'\n';
             }
             return res;
         }

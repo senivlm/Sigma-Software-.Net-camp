@@ -2,50 +2,42 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using static task6.FileReader;
+
 namespace task6
 {
     class Meter
     {
-        int NumberOfFlats;
-        int Quarter;
-        string[,] Info;
-        public Meter(string path)
+        int numberOfFlats;
+        int quarter;
+        List<Flat> info;
+        public Meter(string path= "file.txt")
         {
-            FileReader fr = new FileReader(path);
-            NumberOfFlats = GetMeterFileInfo()[0];
-            Quarter = GetMeterFileInfo()[1];
-            Info = ReadMeterFile();
+            numberOfFlats = FileReader.GetMeterFileInfo(path)[0];
+            quarter = FileReader.GetMeterFileInfo(path)[1];
+            info = FileReader.ReadMeterFile(path);
         }
-        private string GetOneLine(int i)
+
+        private Flat GetOneLine(int i)
         {
-            return
-                String.Format("Квартира №{0,3}; Прізвище власника = {1,15}; Початкові покази = {2,5}; Кінцеві покази = {3,5};" +
-                " Дати передачі показів :{4,10}, {5,10}, {6,10}",
-                Info[i, 0],
-                Info[i, 1],
-                Info[i, 2],
-                Info[i, 3],
-                (Info[i, 4] + '.' + (Quarter - 1) * 3 + ".22"),
-                (Info[i, 5] + '.' + ((Quarter - 1) * 3 + 1) + ".22"),
-                (Info[i, 6] + '.' + ((Quarter - 1) * 3 + 2) + ".22")) + '\n';
+            return info[i];
         }
-        public void OutputToFile()
+
+        public void OutputToFile(string path= "..\\..\\..\\output.txt")
         {
             string res = null;
-            for (int i = 0; i < NumberOfFlats; i++)
+            for (int i = 0; i < numberOfFlats; i++)
                 res += GetOneLine(i);
 
-            StreamWriter writer = new StreamWriter("..\\..\\..\\output.txt");
+            StreamWriter writer = new StreamWriter(path);
             writer.WriteLine(res);
             writer.Close();
         }
 
-        public string GetOneFlat(int FlatN)
+        public Flat GetOneFlat(int FlatN)
         {
-            string res = "Квартиру не знайдено";
-            for (int i = 0; i < NumberOfFlats; i++)
-                if (Info[i, 0] == FlatN.ToString())
+            Flat res = null;
+            for (int i = 0; i < numberOfFlats; i++)
+                if (info[i].FlatNumber == FlatN)
                     res = GetOneLine(i);
 
             return res;
@@ -56,35 +48,35 @@ namespace task6
             string res = null;
             int max = 0;
 
-            for (int i = 0; i < NumberOfFlats; i++)
+            for (int i = 0; i < numberOfFlats; i++)
             {
-                if (Convert.ToInt32(Info[i, 3]) - Convert.ToInt32(Info[i, 2]) > max)
+                if (info[i].EndIndication - info[i].StartIndication > max)
                 {
-                    max = Convert.ToInt32(Info[i, 3]) - Convert.ToInt32(Info[i, 2]);
-                    res = Info[i, 1];
+                    max = info[i].EndIndication - info[i].StartIndication;
+                    res = info[i].OwnerSurname;
                 }
-            }   
+            }
 
-            return "Найбільший боржник = "+res+" з заборгованістю = " +(pricePerKvt*max).ToString();
+            return "Найбільший боржник = " + res + " з заборгованістю = " + (pricePerKvt * max).ToString();
         }
 
         public string GetUnusedFlat()
         {
             string res = null;
 
-            for (int i = 0; i < NumberOfFlats; i++)
-                if (Convert.ToInt32(Info[i, 3]) - Convert.ToInt32(Info[i, 2]) == 0)
-                    res+= Info[i, 0]+", ";
+            for (int i = 0; i < numberOfFlats; i++)
+                if (info[i].EndIndication - info[i].StartIndication == 0)
+                    res += info[i].FlatNumber.ToString() + ", ";
 
             return "Номер квартири, в якій не використовувалась електроенергія = " + res;
         }
 
         public string[] CalculateCosts(int pricePerKvt)
         {
-            string[] res = new string[NumberOfFlats];
+            string[] res = new string[numberOfFlats];
 
-            for (int i = 0; i < NumberOfFlats; i++)
-                res[i] = "Квартира №" + Info[i, 0] + " борг = "+(Convert.ToInt32(Info[i, 3]) - Convert.ToInt32(Info[i, 2]))* pricePerKvt;
+            for (int i = 0; i < numberOfFlats; i++)
+                res[i] = "Квартира №" + info[i].FlatNumber.ToString() + " борг = " + (info[i].EndIndication - info[i].StartIndication) * pricePerKvt;
 
             return res;
         }
@@ -93,17 +85,18 @@ namespace task6
         {
             DateTime now = DateTime.Today;
             DateTime recent;
-            string[] res = new string[NumberOfFlats];
+            string[] res = new string[numberOfFlats];
 
-            for (int i = 0; i < NumberOfFlats; i++)
+            for (int i = 0; i < numberOfFlats; i++)
             {
-                recent = Convert.ToDateTime((Info[i, 6] + '.' + ((Quarter - 1) * 3 + 2) + ".22"));
+                recent = Convert.ToDateTime((info[i].ThirdDate.ToString() + '.' + ((quarter - 1) * 3 + 2) + ".22"));
 
-                res[i] = "Квартира №" + Info[i, 0] + " днів пройшло з моменту останнього зняття показу лічильника = " +
+                res[i] = "Квартира №" + info[i].FlatNumber + " днів пройшло з моменту останнього зняття показу лічильника = " +
                    now.Subtract(recent).Days.ToString();
-                
+
             }
             return res;
         }
+        
     }
 }
