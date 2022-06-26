@@ -11,7 +11,7 @@ namespace task7
     {
         private Dictionary<Product, int> product_storage;
         private Log log;
-        #region task7
+        #region task2
 
         public Product this[int index]//створити індексатор для повного доступу за номером до масиву товарів.
         {
@@ -98,7 +98,7 @@ namespace task7
                 res += '\n' + keyVal.Key.ToString() + "\nCount = " + keyVal.Value;
             return res;
         }
-        #endregion task7
+        #endregion task2
         #region task7
 
         private string ReadPlainFromFiles()
