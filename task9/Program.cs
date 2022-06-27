@@ -18,6 +18,7 @@ namespace task9
                 PriceKurant pc = FileReader.ReadPriceFile("Prices.txt", currency);
                 double price = 0;
                 string result = "";
+                //за умовою задачі треба було вивести також всі різні продукти, які треба закупити та їх об'єм, а також надати користувачеві вибір грошової одиниці,з якою працюєте.
                 for (int i = 0; i < m.Length; i++)
                     if (MenuService.TryGetDishPrice(m[i], pc, out price))
                         result += "Total price of " + m[i].Name + " in " + pc.CurrentCurrency + " = " + price + '\n';
@@ -42,6 +43,8 @@ namespace task9
                     StreamWriter writer = new StreamWriter("..\\..\\..\\Prices.txt", true);
                     writer.WriteLine(name + " - " + price.ToString());
                     writer.Close();
+                    
+                    //краще обходитись "вічним циклом"
                     goto loop;
                 }
                 else
