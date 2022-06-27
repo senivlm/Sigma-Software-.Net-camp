@@ -10,7 +10,7 @@ namespace task10
     class Program
     {
         static void Main(string[] args)
-        {
+        {// Скидайте, будь ласка, актуальний код.(Виймати з коментарів різні коди ще те задоволення!)
             //#region task1
             //Dictionary<string, string> dictionary;
             //List<string> text;
