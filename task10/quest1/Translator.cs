@@ -24,6 +24,7 @@ namespace task10.quest1
             vocabluary = new Dictionary<string, string>();
             text = "";
             this.pathToText = pathToText;
+            //Для стабільної роботи цього класу треба робити глибоку копію!
             this.pathToDictionary = pathToDictionary;
         }
 
@@ -41,7 +42,7 @@ namespace task10.quest1
         }
 
         public void AddDictionary(Dictionary<string, string> dictionary)
-        {
+        {// тут теж
             vocabluary = dictionary;
         }
 
@@ -104,8 +105,9 @@ namespace task10.quest1
 
             return char.IsUpper(input[0]) ? true : false;
         }
+        //Цей метод слід винести з цього класу.
         private void AddToDictionary(string word)
-        {
+        {// у модельних класах не організовується діалог.
             Console.WriteLine($"Немає перекладу для слова {word}, введiть переклад");
             string value = Console.ReadLine();
             vocabluary.Add(word, value);
