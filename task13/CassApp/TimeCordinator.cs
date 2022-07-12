@@ -11,7 +11,7 @@ namespace CassApp
             return Math.Abs(c.Coordinate - p.Coordinate);
         }
         private int ChooseCassa(List<Cassa> casses, Person person)
-        {
+        {// неправильно спроектовано.
             int result;
             List<int> cassaQueues = new List<int>();
             List<double> cassaDistances = new List<double>();
@@ -36,6 +36,7 @@ namespace CassApp
 
         public delegate void CassaOverflow(ref List<Cassa> casses, Cassa c);
         public virtual event CassaOverflow Reprofile;
+        //неправильне розуміння подій!!!!
         protected virtual void OnCassaOverflow(ref List<Cassa> casses, Cassa c)
         {
             Reprofile += ReprofileCassa;
