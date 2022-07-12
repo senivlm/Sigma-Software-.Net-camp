@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +25,6 @@ namespace task12._3
                 case 't': return 5;
                 default: return 6;
             }
-        }
-        static private bool IsDelimeter(char c)
-        {
-            if (" =".Contains(c))
-                return true;
-            return false;
         }
         static private bool IsOperator(char c)
         {
@@ -72,17 +66,18 @@ namespace task12._3
         static private string GetExpression(string input)
         {
             string output = string.Empty;
+            //операції можуть мати і більше одного символа. Тут Ви вже зробили обмеження для операцій
+            //REPLY: операції син, кос ми парсимо до одного символу і цей момент не можна оминути, адже читати вираз користувача все одно треба
+            //тому разом з читанням замінюємо операцію на якийсь символ. 
             Stack<char> operStack = new Stack<char>();
             try
             {
                 if (input != null)
                     for (int i = 0; i < input.Length; i++)
                     {
-                        if (IsDelimeter(input[i]))
-                            continue;
                         if (Char.IsDigit(input[i]))
                         {
-                            while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
+                            while (input[i] != ' ' && !IsOperator(input[i]))
                             {
                                 output += input[i];
                                 i++;
@@ -121,6 +116,8 @@ namespace task12._3
                             }
                         }
                     }
+                else
+                    throw new Exception("Empty expression received at calculating");
 
                 while (operStack.Count > 0)
                     output += operStack.Pop() + " ";
@@ -147,7 +144,7 @@ namespace task12._3
                     {
                         string a = string.Empty;
 
-                        while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
+                        while (input[i] != ' ' && !IsOperator(input[i]))
                         {
                             a += input[i];
                             i++;
