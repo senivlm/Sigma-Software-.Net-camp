@@ -27,7 +27,7 @@ namespace task12._3
             }
         }
         static private bool IsDelimeter(char c)
-        {
+        {// не  зрозуміло, що Ви хотіли зробити.
             if (" =".Contains(c))
                 return true;
             return false;
@@ -72,14 +72,17 @@ namespace task12._3
         static private string GetExpression(string input)
         {
             string output = string.Empty;
+            //операції можуть мати і більше одного символа. Тут Ви вже зробили обмеження для операцій
             Stack<char> operStack = new Stack<char>();
             try
-            {
+            {// Якщо прийде nullви не матимете жодного повідомлення
                 if (input != null)
                     for (int i = 0; i < input.Length; i++)
                     {
                         if (IsDelimeter(input[i]))
+                            //Можна уникнути
                             continue;
+                        //неоптимально
                         if (Char.IsDigit(input[i]))
                         {
                             while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
