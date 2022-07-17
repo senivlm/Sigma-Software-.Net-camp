@@ -1,0 +1,6 @@
+ice-cream, 22, 0.08
+hello world, ,   ,    , , ,   ,
+Milk, 100, 0.9 , 10
+Lamb, 100, 50.2, Highest, Lamb
+nuggets, 50, 10, Second, Chicken
+nuggets, 50, 10, hello, Chicken

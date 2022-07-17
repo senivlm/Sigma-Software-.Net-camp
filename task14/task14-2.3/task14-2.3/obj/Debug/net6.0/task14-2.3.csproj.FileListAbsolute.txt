@@ -1,0 +1,15 @@
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\bin\Debug\net6.0\task14-2.3.exe
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\bin\Debug\net6.0\task14-2.3.deps.json
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\bin\Debug\net6.0\task14-2.3.runtimeconfig.json
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\bin\Debug\net6.0\task14-2.3.dll
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\bin\Debug\net6.0\task14-2.3.pdb
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\task14-2.3.csproj.AssemblyReference.cache
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\task14-2.3.GeneratedMSBuildEditorConfig.editorconfig
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\task14-2.3.AssemblyInfoInputs.cache
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\task14-2.3.AssemblyInfo.cs
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\task14-2.3.csproj.CoreCompileInputs.cache
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\task14-2.3.dll
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\refint\task14-2.3.dll
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\task14-2.3.pdb
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\task14-2.3.genruntimeconfig.cache
+D:\down\Sigma-Software-.Net-camp-main\task14-2.3\task14-2.3\obj\Debug\net6.0\ref\task14-2.3.dll
