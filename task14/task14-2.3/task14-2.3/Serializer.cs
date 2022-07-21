@@ -45,7 +45,7 @@ namespace task14_2._3
             s.Close();
             return res;
         }
-    }
+    }//є запитання до цього класу. Попрошу залишитись на обговорення.
     public class Entry
     {
         public object Key;
