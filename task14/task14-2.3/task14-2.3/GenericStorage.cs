@@ -40,6 +40,7 @@ namespace task14_2._3
                 Add(value);
             }
         }
+        // при наявності відкритих конструкторів клас не може бути Одинаком.!!!
         public Storage(params T[] produts)//наповнення інформацією даних шляхом ініціалізації,
         {
             product_storage = new Dictionary<T, int>();
